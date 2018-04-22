@@ -2,3 +2,7 @@
 This repository contains some of the projects created during college.
  - [Chemical Equation Balancer](https://bmu.akshatmittal.com/chemical-equation-balancer/)
  - [Lights Out](https://bmu.akshatmittal.com/lights-out/)
+ - [Sudoku](https://bmu.akshatmittal.com/sudoku/)
+ - [Tic-Tac-Toe](https://bmu.akshatmittal.com/tic-tac-toe/)
+
+ This is an incomplete list. Partial code may have been taken from other sources.
