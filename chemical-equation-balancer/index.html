@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Chemical Equation Solver by Akshat Mittal</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="canonical" href="https://bmu.akshatmittal.com/chemical-equation-balancer/">
+</head>
+<body>
+	<div id="cover">
+		<h1>Balancing a Chemical Equation</h1>
+	</div>
+	<div id="main" class="top"><br><br>
+		<div class="group">
+	    <input type="text" required id="inputFormula" autocomplete="off" onkeyup="(function(){console.log(window.event.which);if(window.event.which == 13) balance(document.getElementById('inputFormula').value)})();">
+	    <span class="highlight"></span>
+	    <span class="bar"></span>
+	    <label>Chemical Equation:</label>
+	  </div>
+	  <button class="raised" onclick="balance(document.getElementById('inputFormula').value); return false" id="proBut">Balance Equation</button>
+	  <br><br>
+	  <div id="res">Enter an unbalanced Chemical Equation and hit "Balance Equation"<br><br><span id="balanced" style="font-family:serif; font-size:150%; line-height:1.6;"></span><span id="message"></span><code id="codeOutput"></code></div>
+	  <br>
+	</div>
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
