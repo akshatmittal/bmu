@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="canonical" href="https://bmu.akshatmittal.com/air-quality-index/">
+    <title>Air Quality Index</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <style>
+        #map {
+            height: 85%;
+            top: 15%;
+            position: absolute !important;
+            width: 100%;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Air Quality Index</h1>
+    <h2>
+        <span style="color:red;">Red</span>: High PPM,
+        <span style="color: blue;">Blue</span>: Medium PPM,
+        <span style="color: green;">Green</span>: Low PPM</h2>
+    <div id="map"></div>
+    <script>
+        var sensorMap = {
+            s1: {
+                center: {
+                    lat: 28.2466,
+                    lng: 76.8111
+                },
+                q: 0,
+                v: 0
+            },
+            s2: {
+                center: {
+                    lat: 28.2484,
+                    lng: 76.8111
+                },
+                q: 0,
+                v: 0
+            },
+            s3: {
+                center: {
+                    lat: 28.2481,
+                    lng: 76.8126
+                },
+                q: 0,
+                v: 0
+            },
+            s4: {
+                center: {
+                    lat: 28.2464,
+                    lng: 76.8145
+                },
+                q: 0,
+                v: 0
+            }
+        };
+
+        // This example creates circles on the map, representing populations in North
+        // America.
+
+        // First, create an object containing LatLng and population for each city.
+
+        function getColor(e) {
+            if (e < 100)
+                return "#00ff00"
+            else if (e < 150)
+                return "#0000ff"
+            else return "#ff0000"
+        }
+
+        function initMap() {
+            // Create the map.
+            $.getJSON("https://api.thingspeak.com/channels/459498/feeds.json?results=100", function (e) {
+                d = e.feeds;
+                d.forEach(function (e) {
+                    sensorMap.s1.q += parseFloat(e.field1 ? e.field1 : 0);
+                    sensorMap.s1.v += e.field1 != null ? 1 : 0;
+                    sensorMap.s2.q += parseFloat(e.field2 ? e.field2 : 0);
+                    sensorMap.s2.v += e.field2 != null ? 1 : 0;
+                    sensorMap.s3.q += parseFloat(e.field3 ? e.field3 : 0);
+                    sensorMap.s3.v += e.field3 != null ? 1 : 0;
+                    sensorMap.s4.q += parseFloat(e.field4 ? e.field4 : 0);
+                    sensorMap.s4.v += e.field4 != null ? 1 : 0;
+                });
+                sensorMap.s1.r = sensorMap.s1.q / sensorMap.s1.v;
+                sensorMap.s2.r = sensorMap.s2.q / sensorMap.s2.v
+                sensorMap.s3.r = sensorMap.s3.q / sensorMap.s3.v
+                sensorMap.s4.r = sensorMap.s4.q / sensorMap.s4.v
+                console.log(sensorMap);
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 18,
+                    center: {
+                        lat: 28.2469543,
+                        lng: 76.8128887
+                    },
+                    mapTypeId: 'terrain'
+                });
+
+                // Construct the circle for each value in citymap.
+                // Note: We scale the area of the circle based on the population.
+                for (var s in sensorMap) {
+                    // Add the circle for this city to the map.
+                    var circle = new google.maps.Circle({
+                        strokeColor: '#ffffff',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: getColor(sensorMap[s].r),
+                        fillOpacity: 0.35,
+                        map: map,
+                        center: sensorMap[s].center,
+                        radius: sensorMap[s].r / 3
+                    });
+                }
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQaZuEsk3Ri-B40-ZZUTH3s9hSgVGxPxM&callback=initMap">
+    </script>
+</body>
+
+</html>

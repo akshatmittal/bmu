@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>Prims's Minimum Spanning Tree</title>
+
+    <meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="canonical" href="https://bmu.akshatmittal.com/prims-visualization/">
+    <link rel="stylesheet" href="vamonos.css">
+    <link rel="stylesheet" href="custom.css">
+    <script type="text/javascript" src="vamonos-all.js"></script>
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <!-- This is based on Vamonos Demo -->
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 col-md-offset-1 col-md-10 panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1>Prim's Minimum Spanning Tree</h1>
+                    </div>
+                    <div class="row nopadding panel-body">
+                        <div class="col-12 nopadding">
+                            <div id="controls"></div>
+                        </div>
+                    </div>
+                    <div class="row nopadding panel-body">
+                        <div class="col-md-6 nopadding">
+                            <div class="pseudocode-procedures">
+                                <div id="pseudocode" title="MST-Prim(G,r)">
+                                    for each u &in; G.V
+                                        u.key = &infin;
+                                        u.pred = nil
+                                    r.key = 0
+                                    Q = G.V
+                                    while Q &ne; &empty;
+                                        u = ExtractMin(Q)
+                                        for each v &in; G.Adj[u]
+                                            if v &in; Q and w(u,v) &lt; v.key
+                                                v.pred = u
+                                                v.key = w(u,v)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 nopadding">
+                            <table class="variable-widgets">
+                                <tr>
+                                    <td>
+                                        <div id="g-var"></div>
+                                    </td>
+                                    <td>
+                                        <div id="graph"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="q-var"></div>
+                                    </td>
+                                    <td>
+                                        <div id="queue"></div>
+                                    </td>
+                                </tr>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel-heading">
+                        <h6><a href="https://akshatmittal.com">Akshat Mittal</a></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="script.js"></script>
+
+</html>
