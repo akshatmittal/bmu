@@ -7,5 +7,6 @@ This repository contains some of the projects created during college.
  - [Face Tracking](https://bmu.akshatmittal.com/face-tracking/)
  - [Visualization for Prim's Algorithm](https://bmu.akshatmittal.com/prims-visualization/)
  - [Air Quality Index](https://bmu.akshatmittal.com/air-quality-index/)
+ - [Infix to Prefix](https://bmu.akshatmittal.com/infix-to-prefix/)
 
  This is an incomplete list. Partial code may have been taken from other sources.
