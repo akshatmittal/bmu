@@ -8,5 +8,6 @@ This repository contains some of the projects created during college.
  - [Visualization for Prim's Algorithm](https://bmu.akshatmittal.com/prims-visualization/)
  - [Air Quality Index](https://bmu.akshatmittal.com/air-quality-index/)
  - [Infix to Prefix](https://bmu.akshatmittal.com/infix-to-prefix/)
+ - [Lazeez Chatbot UI](https://bmu.akshatmittal.com/lazeez/)
 
  This is an incomplete list. Partial code may have been taken from other sources.
