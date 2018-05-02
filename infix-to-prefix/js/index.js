@@ -181,7 +181,7 @@ function Evaluate() {
     var prefix = reversePrefix.reverse();
     //Prefix array
     console.log("Prefix: " + prefix.join(""));
-    document.getElementById('Prefix').innerHTML = "Prefix: " + prefix.join(" ");
+    document.getElementById('Prefix').innerHTML = "Prefix: " + prefix.join(" ") + ", Result: " + eval(infix);
     //Evaluate & draw
     const et = new ExpTree(prefix);
     console.log(et);
